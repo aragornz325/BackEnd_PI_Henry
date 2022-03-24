@@ -59,33 +59,41 @@ const gameInDb = async (id) => {
     
     router.post('/', async (req, res) => {
       console.log('---------entre a post, voy a crear un juego---------')
-      let {
-        name,
-        description,
-        released,
-        rating,
-        platforms,
-        genres,
-        createdInDb,
-      } = req.body
-  
-      let videogameCreated = await Videogame.create({
-        name, 
-        description,
-        released,
-        rating,
-        platforms,
-        createdInDb
-      })
-  
-      let genresInDb = await Genres.findAll({
-        where: {name: genres},
-        attributes: {
-          exclude: ["createdAt", "updatedAt"],
-        }
-      })
-      videogameCreated.addGenres(genresInDb);
-      res.send("Videogame created successfully");
+      
+      try {
+        let {
+          name,
+          description,
+          released,
+          rating,
+          platforms,
+          genres,
+          createdInDb,
+        } = req.body
+    
+        let videogameCreated = await Videogame.create({
+          name, 
+          description,
+          released,
+          rating,
+          platforms,
+          createdInDb
+        })
+    
+        let genresInDb = await Genres.findAll({
+          where: {name: genres},
+          attributes: {
+            exclude: ["createdAt", "updatedAt"],
+          }
+        })
+        videogameCreated.addGenres(genresInDb);
+        res.send("Videogame created successfully");
+      } catch(error) {
+        console.log({error})
+        res.status(406).json("no se creo nada")
+      }
+      
+      
     })
 
     module.exports = router;
