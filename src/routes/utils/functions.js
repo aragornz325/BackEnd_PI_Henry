@@ -2,6 +2,7 @@
 let pageMap = (e) =>{
     return {
     name: e.name,
+    description: e.description,
     genres: e.genres.map((e) => {
         return {
             id: e.id,
@@ -10,7 +11,6 @@ let pageMap = (e) =>{
     }),
     released: e.released,
     rating: e.rating,
-    description: e.description,
     platforms: e.platforms.map((e) =>  e.platform.name),
     image: e.background_image,
     createdInDb: e.createdInDb = false,

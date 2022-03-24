@@ -15,7 +15,7 @@ const gameInDb = async (id) => {
 				include: {
 					model: Genres,
 					as: 'genres',
-					attributes: ['id', 'name'],
+					attributes: ['name', 'id' ],
 					through: { attributes: [] },
 				},
 			});
@@ -24,6 +24,8 @@ const gameInDb = async (id) => {
       return error
     }
   }
+  console.log(gameInDb)
+
   
   router.get(`/:idVideogame`, async (req, res) => {
 
