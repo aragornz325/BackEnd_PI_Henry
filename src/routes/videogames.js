@@ -42,10 +42,12 @@ router.get("/", async (req, res) => {
       })
       let vgToSend = dbVideogame.concat(videogamesMap).slice(0, 15);
       res.send(vgToSend);
-    } else {
-      let resp = await axios.get(
-        `https://api.rawg.io/api/games?key=${YOUR_API_KEY}`
-      )
+    } 
+    
+    else 
+    
+    {
+      let resp = await axios.get(`https://api.rawg.io/api/games?key=${YOUR_API_KEY}`)
 
       let respLimited = resp.data.results;
 
