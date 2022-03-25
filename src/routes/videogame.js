@@ -4,6 +4,7 @@ const router = Router();
 const axios = require("axios");
 const { YOUR_API_KEY } = process.env;
 const { Genres, Videogame } = require("../db");
+const { route } = require("./videogames");
 
 
 const gameInDb = async (id) => {
@@ -30,6 +31,7 @@ const gameInDb = async (id) => {
   router.get(`/:idVideogame`, async (req, res) => {
 
       const { idVideogame } = req.params;
+      console.log(req.params)
     if (idVideogame.includes("-") && typeof idVideogame === "string") {
       let gameAskDb = await gameInDb(idVideogame);
       
@@ -66,16 +68,18 @@ const gameInDb = async (id) => {
           description,
           released,
           rating,
+          image,
           platforms,
           genres,
           createdInDb,
         } = req.body
-    
+        console.log(req.body)
         let videogameCreated = await Videogame.create({
           name, 
           description,
           released,
           rating,
+          image,
           platforms,
           createdInDb
         })
@@ -96,6 +100,9 @@ const gameInDb = async (id) => {
       
     })
 
+
+    
+      
     module.exports = router;
 
 
