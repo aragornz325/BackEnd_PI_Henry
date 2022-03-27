@@ -104,7 +104,7 @@ router.get("/", async (req, res) => {
       })
 
       const vgConcatenated = dbVg.concat(videogames);
-      const esteladohaciaelenemigo = vgConcatenated?.slice(1,101)
+      const esteladohaciaelenemigo = vgConcatenated?.slice(0,100)
       
       console.log('cantidad de juegos enviados al front---->', esteladohaciaelenemigo.length)
       res.json(esteladohaciaelenemigo);

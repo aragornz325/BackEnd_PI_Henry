@@ -32,7 +32,7 @@ const gameInDb = async (id) => {
 
       const { idVideogame } = req.params;
       console.log(req.params)
-    if (idVideogame.includes("-") && typeof idVideogame === "string") {
+      if (idVideogame.includes("-") && typeof idVideogame === "string") {
       let gameAskDb = await gameInDb(idVideogame);
       
       //let gameFilterId = await gameAskDb.filter( gId => gId.id === idVideogame) 
