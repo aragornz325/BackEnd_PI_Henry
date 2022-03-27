@@ -25,7 +25,7 @@ const gameInDb = async (id) => {
       return error
     }
   }
-  console.log(gameInDb)
+  //console.log(gameInDb)
 
   
   router.get(`/:idVideogame`, async (req, res) => {

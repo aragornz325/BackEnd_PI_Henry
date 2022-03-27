@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 const { expect } = require('chai');
 const session = require('supertest-session');
 const app = require('../../src/app.js');
@@ -6,8 +5,9 @@ const { Videogame, conn } = require('../../src/db.js');
 
 const agent = session(app);
 const videogame = {
-  name: 'Super Mario Bros',
-  platforms: 'xbox'
+  name: 'ark survival envolved',
+  description: 'el de los dinosuarios qe juega maximo',
+  background_image: 'img'
 };
 
 describe('Videogame routes', () => {
@@ -17,9 +17,19 @@ describe('Videogame routes', () => {
   }));
   beforeEach(() => Videogame.sync({ force: true })
     .then(() => Videogame.create(videogame)));
-  describe('GET localhost:3001/api/videogames', () => {
-    it('should get 200', () =>
-      agent.get('http://localhost:3001/api/videogames').expect(200)
+  describe('GET /genres', () => {
+    it('/genres should get 200', () =>
+      agent.get('/api/genres').expect(200)
+    );
+  });
+  describe('GET /platforms', () => {
+    it('/platforms should get 200', () =>
+      agent.get('/api/platforms').expect(200)
+    );
+  });
+  describe('GET /videogame/3328(idVideogame)', () => {
+    it('/videogame/3328 should get 200', () =>
+      agent.get('/api/videogame/3328').expect(200)
     );
   });
 });

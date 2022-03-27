@@ -97,8 +97,17 @@ router.get("/", async (req, res) => {
         }
       });
 
+      videogames.sort(function(a,b) {
+        if(a.id < b.id) return -1;
+        if(a.id > b.id) return 1;
+        return 0
+      })
+
       const vgConcatenated = dbVg.concat(videogames);
-      res.json(vgConcatenated);
+      const esteladohaciaelenemigo = vgConcatenated?.slice(1,101)
+      
+      console.log('cantidad de juegos enviados al front---->', esteladohaciaelenemigo.length)
+      res.json(esteladohaciaelenemigo);
     }
   } catch (error) {
     console.log(error);
