@@ -73,7 +73,7 @@ const gameInDb = async (id) => {
           genres,
           createdInDb,
         } = req.body
-        console.log(req.body)
+        //console.log(req.body)
         let videogameCreated = await Videogame.create({
           name, 
           description,

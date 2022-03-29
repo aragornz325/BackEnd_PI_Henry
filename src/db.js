@@ -12,7 +12,7 @@ const {
  * ! const sequelize = new Sequelize(`postgres://ukjahnqj:Ky7qjFGhFrErzSpujVv-tRcadpPDYuB7@kashin.db.elephantsql.com/ukjahnqj
  */
 
- const sequelize = new Sequelize(`postgres://ukjahnqj:Ky7qjFGhFrErzSpujVv-tRcadpPDYuB7@kashin.db.elephantsql.com/ukjahnqj`, {
+  const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/videogames`, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 });
@@ -38,7 +38,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 // Para relacionarlos hacemos un destructuring
 //modelVideogame(sequelize);
 //modelGenres(Sequelize);
-const { Videogame, Genres } = sequelize.models;
+const { Videogame, Genres, Contacto } = sequelize.models;
 // Aca vendrian las relaciones
  Videogame.belongsToMany(Genres, {as:"genres", through: "VideogameGenres"});
  Genres.belongsToMany(Videogame, {through: "VideogameGenres"});
