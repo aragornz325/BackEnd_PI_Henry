@@ -7,8 +7,8 @@ const { USER_NODEMAIL, PASS_NODEMAIL } = process.env;
     port: 465,
     secure: true, 
     auth: {
-      user: 'rodrigo.m.quintero@gmail.com', 
-      pass: 'jheozwbuniznktxl', 
+      user: 'gamestackhenry@gmail.com', 
+      pass: 'kgxdkhwainghasqy', 
     },
   });
 
